@@ -13,6 +13,9 @@ import com.vaadin.flow.component.textfield.TextField;
 import com.vaadin.flow.theme.Theme;
 import com.vaadin.flow.theme.ThemeUtil;
 
+import java.util.Arrays;
+import java.util.Locale;
+
 
 public class ProductForm extends VerticalLayout {
     public ProductForm(){
@@ -28,6 +31,23 @@ public class ProductForm extends VerticalLayout {
         add(price);
 
         DatePicker available = new DatePicker("Available");
+
+        DatePicker.DatePickerI18n datePickerI18n = new DatePicker.DatePickerI18n();
+        datePickerI18n.setWeek("Semana");
+        datePickerI18n.setCalendar("Calendario");
+        datePickerI18n.setClear("Borrar");
+        datePickerI18n.setToday("Hoy");
+        datePickerI18n.setCancel("Cancelar");
+        datePickerI18n.setWeekdays(Arrays.asList("Domingo", "Lunes", "Martes", "Miércoles", "Jueves", "Viernes", "Sabado"));
+        datePickerI18n.setWeekdaysShort(Arrays.asList("Dom", "Lun", "Mar", "Mie", "Jue", "Vie", "Sab"));
+        datePickerI18n.setMonthNames(Arrays.asList("Enero", "Febrero", "Marzo", "Abril", "Mayo", "Junio", "Julio", "Agosto",
+                "Septiembre", "Octubre", "Noviembre", "Diciembre"));
+
+
+        available.setI18n(datePickerI18n);
+
+
+        available.setLocale(Locale.GERMAN );
         add(available);
 
         ComboBox<String> category = new ComboBox<>("Category");
